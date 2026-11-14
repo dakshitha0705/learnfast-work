@@ -44,3 +44,9 @@ One entry per section: date, what was built, key numbers, what I learned.
 - Reference checks: identical to the reference miner: True; identical to the dataset's truth: True; same labels as the reference: True.
 - Only differences from the course: timings (CPU in Docker is a bit slower).
 - Learned: Apriori stays exact while skipping almost everything, and the bitset trick makes 100,000 baskets take seconds instead of hours. Surprising: only 32 of the 56,470 true itemsets are the ones we planted; the rest are extensions and chance.
+
+## Section 7 — Verbalize a Basket (2026-11-14)
+- Built: `07_verbalize.ipynb` — `my_verbalize_basket` ("Basket: a; b; c", each item once, seeded shuffle, max 30 items), SmolLM2-135M token lengths, 95/5 train/validation split (seed 0).
+- Key numbers (all match the course): sorted order 100% "next is later in alphabet" vs shuffled 50%; tokens per basket mean 108 / median 102 / p95 198 / p99 250 / max 356, ~11.3 per item; context 128 / 192 / 256 cuts 30.1% / 6.1% / 0.8% → chose 256; split 95,002 train / 4,998 held out; separators all 107.8 tokens.
+- Reference check: `matches the reference: True` (2,000 baskets).
+- Learned: Writing a basket as text is a real design choice: each item once, reshuffled every time, so the model can only learn which items are together. Surprising: an average basket is already about 108 tokens, around 11 per item, because invented brand names split into tiny pieces.
