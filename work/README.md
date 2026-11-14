@@ -20,7 +20,7 @@ path on CPU (Windows), not MLX, so timings and some numbers differ from the cour
 | 6 | The Exact Answer | ✅ | 2026-11-14 | 06_exact_answer.ipynb |
 | 7 | Verbalize a Basket | ✅ | 2026-11-14 | 07_verbalize.ipynb |
 | 8 | The Off-the-Shelf Baseline | ✅ | 2026-11-14 | 08_baseline.ipynb |
-| 9 | Continued Pretraining | ⬜ | | 09_continued_pretraining.ipynb |
+| 9 | Continued Pretraining | ✅ | 2026-11-15 | 09_continued_pretraining.ipynb |
 | 10 | Probe the Model | ⬜ | | 10_probe.ipynb |
 | 11 | From Itemsets to Cross-sell and Upsell | ⬜ | | 11_cross_sell.ipynb |
 

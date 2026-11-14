@@ -8,7 +8,9 @@ Differences, because this runs for an hour or more on a CPU:
 - the batches for all steps are planned up front from the seed, so a run can stop and resume at any saved step
   with exactly the same data;
 - a resumable state (model, optimizer, step, history) is saved every `eval_every` steps;
-- no compiled step (MLX's `mx.compile` has no direct equivalent used here).
+- no compiled step (MLX's `mx.compile` has no direct equivalent used here);
+- each batch of 16 runs as two micro-batches of 8 with gradient accumulation (identical gradient, half the peak
+  memory), because a full batch of 16 ran out of Docker's ~11.5 GB on long baskets.
 """
 import json
 import math
@@ -77,7 +79,7 @@ def plan_batches(tokenizer, baskets, steps: int, batch_size: int, seed: int = 0)
 
 def pretrain(model_name: str, baskets, out_dir: str, val_baskets=None, steps: int = 800, batch_size: int = 16,
              learning_rate: float = 1e-4, warmup: int = 50, eval_every: int = 100, seed: int = 0,
-             log=print) -> List[Dict]:
+             log=print, micro_batch: int = 8) -> List[Dict]:
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     state_file = out / "resume.pt"
@@ -109,16 +111,27 @@ def pretrain(model_name: str, baskets, out_dir: str, val_baskets=None, steps: in
     started, recent = time.time(), []
     for step in range(done_steps + 1, steps + 1):
         model.train()
-        ids, mask = pad(planned[step - 1])
+        batch = planned[step - 1]
+        ids, mask = pad(batch)
         for group in optimizer.param_groups:
             group["lr"] = rate(step - 1)
-        loss = next_token_loss(model, ids, mask)
-        loss.backward()
+        # The batch is run in micro-batches to fit in Docker's memory. Each part's summed token loss is divided by the
+        # WHOLE batch's real-token count, so the accumulated gradient equals the one-batch gradient exactly.
+        real_total = mask[:, 1:].sum()
+        loss_value = 0.0
+        for part in range(0, len(batch), micro_batch):
+            p_ids, p_mask = pad(batch[part:part + micro_batch])
+            logits = model(input_ids=p_ids[:, :-1]).logits.float()
+            per_token = torch.nn.functional.cross_entropy(logits.transpose(1, 2), p_ids[:, 1:], reduction="none")
+            part_loss = (per_token * p_mask[:, 1:]).sum() / real_total
+            part_loss.backward()
+            loss_value += float(part_loss.detach())
+            del logits, per_token, part_loss
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         optimizer.step()
         optimizer.zero_grad(set_to_none=True)
         tokens += int(mask.sum())
-        recent.append(float(loss))
+        recent.append(loss_value)
         if step % 10 == 0:
             elapsed = seconds_before + time.time() - started
             log(f"  step {step}  loss {np.mean(recent[-10:]):.3f}  {elapsed / 60:.1f} min")
