@@ -31,3 +31,9 @@ One entry per section: date, what was built, key numbers, what I learned.
 - Key numbers (all match the course): Chai Chaska Tea Powder 250 g + Chai Chaska Sugar 1 kg at 2%: 237 by chance, 1,763 added → exactly 2,000 (2.0000%); tea 3.95% → 5.64%, sugar 5.31% → 6.99%, lift 1.13 → 5.08; itemsets containing the pair at 0.1%: 1 → 21; rare surprising triple: 0 → 50 baskets.
 - Reference check: `identical to the reference: True`.
 - Learned: Planting is exact top-up: count what chance already gives, then add the pair to just enough random baskets to hit 2,000. Surprising: one planted pair created 20 extra frequent triples I never planted.
+
+## Section 5 — Plant Many (2026-11-14)
+- Built: `05_plant_many.ipynb` — `check_plan` (one SKU per product, no nesting, chance ≤30% of target), `my_plant_all` (largest first, `allow_excess=True`), `my_report` (asked-for vs realised support).
+- Key numbers (all match the course): 32 itemsets, 79 distinct items, 24 shared; 29 of 32 within 1% of target; worst: Brew Bazaar Tea Powder 250 g + Chai Chaska Sugar 1 kg, 0.20% → 0.66% (+232%) because its items sit in two different 5% sets (both together in 0.269% of baskets); order: large-first 3 misses, rarest-first 6, as listed 3; 40% of baskets rewritten, 16% hold no planted item, 3.1 vs 1.4 planted items per basket; seeds 0–4: 3 / 0 / 2 / no valid plan / 0 misses.
+- Reference checks: `identical to the reference: True`; my report's realised supports match `planted_report`: True. (`planted_report` returns a list of dicts, so I wrapped it in a DataFrame.)
+- Learned: Planting 32 overlapping itemsets mostly lands exactly (29 of 32), but items shared between sets push some rare ones over target. Surprising: a 0.2% pair came out at 0.66% purely because its two items each sat in a different 5% set.
