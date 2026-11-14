@@ -19,3 +19,9 @@ One entry per section: date, what was built, key numbers, what I learned.
 - Reference check: `same as the reference: True`, largest difference 0.0.
 - Only difference from the course text: the order of exactly tied SKUs in the top-10/slowest-5 lists (Tomato/Potato swapped; 5th slowest shows Kids Korner Baby Cereal 400 g instead of Fresh Fort Phenyl 2 L — both 0.0032%). pandas' default sort isn't stable, so ties can come out in any order.
 - Learned: A SKU's share is four fractions multiplied together, each normalised only over what's stocked, so adding brands splits Toor Dal's slice instead of growing it. Surprising: a sachet sells about like an average SKU; there are just a lot of them.
+
+## Section 3 — Background Baskets (2026-11-14)
+- Built: `03_background_baskets.ipynb` — `my_basket_sizes` (2 + negative binomial, mean 8, dispersion 4), `pick_products` (by product share, no repeats), `pick_sku`, quantities 80/14/4/2%, shuffled; `my_background_baskets`. Checked the Gumbel top-k shortcut against one-at-a-time drawing.
+- Key numbers (all match the course): sizes mean 8.01 / median 7 / p95 15 / max 40; direct-SKU drawing gives 26% double-product baskets; Gumbel vs loop correlation 0.9989; mine vs reference (5k): 10.20 vs 10.20 items, 8.00 vs 7.96 distinct, 77% vs 77% with a repeat; 153 accidental pairs at ≥0.5% (top: Onion 1 kg + Potato 1 kg, 1.31%); lift median 1.12 overall vs 0.96 in same-size baskets; 0 / 156 / 2,825 accidental pairs at mean basket size 4 / 8 / 16.
+- Reference check: statistics match the reference within noise (this section has no exact item-for-item check, since the draws differ).
+- Learned: Even with nothing planted, 153 pairs reach 0.5% support just because both items are popular, so support alone can't tell a real pattern from luck. Surprising: lift isn't 1 for independent items here; mixing small and big baskets pushes it to about 1.12.
