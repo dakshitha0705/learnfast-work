@@ -14,3 +14,9 @@ There are two reasons:
 
 You know the right answer. We plant itemsets at exact frequencies, so we can check precisely what the model found and what it missed. Real sales data has no answer key.
 The model can’t cheat. A model trained on internet text already “knows” that tea goes with sugar. With made-up brands and deliberately odd combinations, anything it gets right must have come from our baskets, not from what it read before.
+
+## Section 1 — A Shop's Catalogue (2026-11-14)
+- Built: `01_catalogue.ipynb` (already scaffolded; ran and verified) — `all_skus` crosses products × picked brands × pack sizes; `my_make_catalog` keeps one SKU per product, then fills to 1,000 at random (seed 0).
+- Key numbers (all match the course): 127 products in 12 categories; pool of 1,127 SKUs at 4 brands/product; 1,000 in the catalogue; SKUs per product min 1 / median 8 / max 12; 28 loose SKUs; 116 sachet/Rs-pack SKUs.
+- Reference check: `identical, item for item: True`.
+- Learned: (Dakshitha to fill)
