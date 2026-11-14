@@ -25,3 +25,9 @@ One entry per section: date, what was built, key numbers, what I learned.
 - Key numbers (all match the course): sizes mean 8.01 / median 7 / p95 15 / max 40; direct-SKU drawing gives 26% double-product baskets; Gumbel vs loop correlation 0.9989; mine vs reference (5k): 10.20 vs 10.20 items, 8.00 vs 7.96 distinct, 77% vs 77% with a repeat; 153 accidental pairs at ≥0.5% (top: Onion 1 kg + Potato 1 kg, 1.31%); lift median 1.12 overall vs 0.96 in same-size baskets; 0 / 156 / 2,825 accidental pairs at mean basket size 4 / 8 / 16.
 - Reference check: statistics match the reference within noise (this section has no exact item-for-item check, since the draws differ).
 - Learned: Even with nothing planted, 153 pairs reach 0.5% support just because both items are popular, so support alone can't tell a real pattern from luck. Surprising: lift isn't 1 for independent items here; mixing small and big baskets pushes it to about 1.12.
+
+## Section 4 — Plant One Itemset (2026-11-14)
+- Built: `04_plant_one_itemset.ipynb` — `my_plant_itemset`: count chance holders, pick random baskets to top up, swap out clashing SKUs of the same product, add with quantities, reshuffle; raises on impossible requests.
+- Key numbers (all match the course): Chai Chaska Tea Powder 250 g + Chai Chaska Sugar 1 kg at 2%: 237 by chance, 1,763 added → exactly 2,000 (2.0000%); tea 3.95% → 5.64%, sugar 5.31% → 6.99%, lift 1.13 → 5.08; itemsets containing the pair at 0.1%: 1 → 21; rare surprising triple: 0 → 50 baskets.
+- Reference check: `identical to the reference: True`.
+- Learned: Planting is exact top-up: count what chance already gives, then add the pair to just enough random baskets to hit 2,000. Surprising: one planted pair created 20 extra frequent triples I never planted.

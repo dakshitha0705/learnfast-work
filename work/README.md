@@ -15,7 +15,7 @@ path on CPU (Windows), not MLX, so timings and some numbers differ from the cour
 | 1 | A Shop's Catalogue | ✅ | 2026-11-14 | 01_catalogue.ipynb |
 | 2 | How Much Each Item Sells | ✅ | 2026-11-14 | 02_popularity.ipynb |
 | 3 | Background Baskets | ✅ | 2026-11-14 | 03_background_baskets.ipynb |
-| 4 | Plant One Itemset | ⬜ | | 04_plant_one_itemset.ipynb |
+| 4 | Plant One Itemset | ✅ | 2026-11-14 | 04_plant_one_itemset.ipynb |
 | 5 | Plant Many | ⬜ | | 05_plant_many.ipynb |
 | 6 | The Exact Answer | ⬜ | | 06_exact_answer.ipynb |
 | 7 | Verbalize a Basket | ⬜ | | 07_verbalize.ipynb |
