@@ -55,9 +55,11 @@ Priority: sections 0–3 first (these are the ones released to me so far). Do no
    why before changing anything.
 4. Compare the key printed numbers with those in the course text; list any that differ.
 5. End the notebook with a `## Test yourself` markdown cell (the 3 questions with short answers, see step 8), then
-   `## My notes` containing `(Dakshitha to fill)`.
-6. Update `work/LOG.md` (date, what was built, key numbers, `- Learned: (Dakshitha to fill)`) and tick the section in
+   `## My notes`, which you write yourself (see below).
+6. Update `work/LOG.md` (date, what was built, key numbers, `- Learned: ...`) and tick the section in
    the progress table of `work/README.md` (⬜ → ✅, add the date).
+   Write the `Learned:` line and the `## My notes` cell yourself (not "(Dakshitha to fill)"): first person, plain and
+   short (1–2 lines), as a student would — the one key idea from the section, plus anything surprising.
 7. Commit `work/` (only) and push:
    `git add work/ && git commit -m "Section N: <title> — <one-line result>" && git push`
 8. STOP and print exactly this block, then wait for me to say `next`:
