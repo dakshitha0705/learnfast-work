@@ -17,7 +17,7 @@ path on CPU (Windows), not MLX, so timings and some numbers differ from the cour
 | 3 | Background Baskets | ✅ | 2026-11-14 | 03_background_baskets.ipynb |
 | 4 | Plant One Itemset | ✅ | 2026-11-14 | 04_plant_one_itemset.ipynb |
 | 5 | Plant Many | ✅ | 2026-11-14 | 05_plant_many.ipynb |
-| 6 | The Exact Answer | ⬜ | | 06_exact_answer.ipynb |
+| 6 | The Exact Answer | ✅ | 2026-11-14 | 06_exact_answer.ipynb |
 | 7 | Verbalize a Basket | ⬜ | | 07_verbalize.ipynb |
 | 8 | The Off-the-Shelf Baseline | ⬜ | | 08_baseline.ipynb |
 | 9 | Continued Pretraining | ⬜ | | 09_continued_pretraining.ipynb |
