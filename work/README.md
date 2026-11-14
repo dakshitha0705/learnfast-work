@@ -1,6 +1,27 @@
-# Your work goes here
+# Teach a Language Model What Sells Together
 
-Create your notebooks in this folder. The workbench container sees it as `/home/learnfast/work`.
+My work for the Learn Fast / askThili drill. Phase 1 of an LLM recommender in miniature: build an invented Indian grocery
+shop with itemsets planted in 100,000 baskets, mine the exact answer with Apriori, then continue pretraining a small open
+language model (SmolLM2-135M) on the baskets and score what it learned against the exact answer and a counting baseline.
 
-This folder is what you submit for the drill — commit and push it as you go, in small steps.
-A steady commit history is part of how your build is assessed.
+Runs in the `lfretail` workbench (`docker compose -f lfretail/docker-compose.yml up`). Sections 8–11 use the PyTorch
+path on CPU (Windows), not MLX, so timings and some numbers differ from the course.
+
+## Progress
+
+| # | Section | Status | Date | Notebook |
+|---|---------|--------|------|----------|
+| 0 | Teach a Language Model What Sells Together | ⬜ | | 00_intro.ipynb |
+| 1 | A Shop's Catalogue | ⬜ | | 01_catalogue.ipynb |
+| 2 | How Much Each Item Sells | ⬜ | | 02_popularity.ipynb |
+| 3 | Background Baskets | ⬜ | | 03_background_baskets.ipynb |
+| 4 | Plant One Itemset | ⬜ | | 04_plant_one_itemset.ipynb |
+| 5 | Plant Many | ⬜ | | 05_plant_many.ipynb |
+| 6 | The Exact Answer | ⬜ | | 06_exact_answer.ipynb |
+| 7 | Verbalize a Basket | ⬜ | | 07_verbalize.ipynb |
+| 8 | The Off-the-Shelf Baseline | ⬜ | | 08_baseline.ipynb |
+| 9 | Continued Pretraining | ⬜ | | 09_continued_pretraining.ipynb |
+| 10 | Probe the Model | ⬜ | | 10_probe.ipynb |
+| 11 | From Itemsets to Cross-sell and Upsell | ⬜ | | 11_cross_sell.ipynb |
+
+See LOG.md for what each section found and what I learned.

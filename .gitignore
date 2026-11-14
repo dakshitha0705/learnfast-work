@@ -24,3 +24,8 @@ datasets/
 __pycache__/
 .venv/
 .DS_Store
+
+# Drill: course text (askThili lessons) and model checkpoints
+course/
+work/checkpoints/
+*.safetensors
