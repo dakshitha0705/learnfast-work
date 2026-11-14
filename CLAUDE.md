@@ -54,7 +54,8 @@ Priority: sections 0–3 first (these are the ones released to me so far). Do no
 3. Every "check against the reference" cell must pass (`True` / `allclose` / "same numbers"). If one fails, explain
    why before changing anything.
 4. Compare the key printed numbers with those in the course text; list any that differ.
-5. End the notebook with `## My notes` containing `(Dakshitha to fill)`.
+5. End the notebook with a `## Test yourself` markdown cell (the 3 questions with short answers, see step 8), then
+   `## My notes` containing `(Dakshitha to fill)`.
 6. Update `work/LOG.md` (date, what was built, key numbers, `- Learned: (Dakshitha to fill)`) and tick the section in
    the progress table of `work/README.md` (⬜ → ✅, add the date).
 7. Commit `work/` (only) and push:
@@ -65,9 +66,12 @@ Priority: sections 0–3 first (these are the ones released to me so far). Do no
    Mark it complete on askThili.
    Result: <key check + 1–2 key numbers>
    Summary: <5–8 plain-English lines: what it does and why>
-   Test yourself: <3 questions, no answers>
+   Test yourself: <3 questions>
+   Answers: <a short plain-English answer (2–4 lines) to each of the 3 questions>
    Try it: <one change to make and what to expect>
    ```
+   The same 3 questions and answers also go at the end of the section's notebook, as a markdown cell
+   `## Test yourself` just above `## My notes`.
 9. When I say `next`: first, if I edited any notebook notes or LOG.md, commit them as
    `Section N: my notes` and push. Then start the next section.
 
