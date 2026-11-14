@@ -18,4 +18,4 @@ One entry per section: date, what was built, key numbers, what I learned.
 - Key numbers (match the course): Kaveri Valley Toor Dal 1 kg = 0.0792 × 0.2899 × 0.3226 × 0.5455 = 0.40% of sales; best/slowest = 541:1; top 1% / 20% / 50% of SKUs make 12% / 64% / 88% of sales; 114 SKUs make half, 365 make 80%; 116 sachets = 11.8% of sales; doubling Surya Grains: 3.66% → 4.78%, Toor Dal stays 2.30%.
 - Reference check: `same as the reference: True`, largest difference 0.0.
 - Only difference from the course text: the order of exactly tied SKUs in the top-10/slowest-5 lists (Tomato/Potato swapped; 5th slowest shows Kids Korner Baby Cereal 400 g instead of Fresh Fort Phenyl 2 L — both 0.0032%). pandas' default sort isn't stable, so ties can come out in any order.
-- Learned: (Dakshitha to fill)
+- Learned: A SKU's share is four fractions multiplied together, each normalised only over what's stocked, so adding brands splits Toor Dal's slice instead of growing it. Surprising: a sachet sells about like an average SKU; there are just a lot of them.
